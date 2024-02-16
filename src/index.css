@@ -1,13 +1,149 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  font-family: "Montserrat", sans-serif;
+  margin: 0;
+  padding: 0;
+  height: 100vh; 
+  background: linear-gradient(to bottom, #121212, #121212, #491813) no-repeat;
+  background-attachment: fixed;
+  color: hsl(0, 0%, 100%);
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.App {
+  margin: 5rem;
+}
+
+.btn {
+  border: 0;
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+  background-color: #00D869;
+  color: #242424;
+  border-radius: 1rem;
+  cursor: pointer;
+  width: 100%;
+}
+
+
+/* CUSTOM INPUT */
+.inputContainer {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 5rem 0;
+}
+
+.inputText {
+  outline: none;
+  width: 70%;
+  border: 2px solid #121212;
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+  background-color: #242424;
+  border-radius: 1rem 0 0 1rem;
+  color: #ccc;
+}
+
+.inputSelect {
+  outline: none;
+  border: 2px solid #121212;
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+  background-color: #242424;
+  color: #ccc;
+  border-radius: 0;
+}
+
+.inputBtn {
+  border: 2px solid #121212;
+  font-size: 1.2rem;
+  padding: 0.5rem 1rem;
+  background-color: #00D869;
+  color: #242424;
+  border-radius: 0 1rem 1rem 0;
+  cursor: pointer;
+}
+
+
+/* LOADING SCREEN */
+.loadingOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.loadingContainer {
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.loadingSpinner {
+  border: 6px solid #00D869;
+  border-top: 6px solid #12121200;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+
+/* SpotifyCard */
+.songLinkContainer {
+  color: inherit;
+  text-decoration: none;
+}
+.songCardContainer {
+  display: flex;
+  padding: 1rem;
+  justify-content: space-between;
+  align-items: center;
+}
+.songCardContainer:hover {
+  background-color: #0e0e0e;
+  padding: 1rem;
+}
+.songCardContent {
+  display: flex;
+  align-items: center;
+}
+.songImg {
+  height: 4rem;
+  width: 4rem;
+  margin-right: 1rem;
+}
+.songName {
+  margin: 0;
+  color: #eee;
+}
+.songArtists {
+  margin: 0;
+  margin-top: 5px;
+  color: #aaa;
+}
+.songRemoveBtn {
+  border: 1px solid #ccc;
+  background-color: #00d86800;
+  color: #ccc;
+  padding: 0.5rem 1rem;
+  border-radius: 2rem;
+}
+.songRemoveBtn:hover {
+  cursor: pointer;
+  background-color: #000;
 }
