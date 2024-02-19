@@ -66,12 +66,32 @@ function App() {
 
   const handleLogin = async () => {
         try {
-            const response = await axios.get('https://spotifygpt-yz7rgadd7a-uc.a.run.app/spotify/login');
+            const response = await axios.get('https://spotifygpt-yz7rgadd7a-uc.a.run.app/spotify/login', {
+                headers: {
+                    'Access-Control-Allow-Origin': '*'
+                }
+            });
             console.log(response);
         } catch (error) {
             console.error('Error:', error);
         }
     };
+
+
+// const handleLogin = () => {
+//         axios.get('https://spotifygpt-yz7rgadd7a-uc.a.run.app/spotify/login')
+//             .then(response => {
+//                 console.log(response);
+//                 return axios.get('https://spotifygpt-yz7rgadd7a-uc.a.run.app/spotify/callback');
+//             })
+//             .then(res => {
+//                 console.log(res);
+//             })
+//             .catch(error => {
+//                 console.error('Error:', error);
+//             });
+// };
+
 
     // const handleLogin = async () => {
     //     const scope = "user-read-private user-read-email playlist-modify-private";

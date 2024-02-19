@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/spotifygpt-frontend/static/css/main.5002c24b.css",
-    "main.js": "/spotifygpt-frontend/static/js/main.21053930.js",
+    "main.js": "/spotifygpt-frontend/static/js/main.5959dc73.js",
     "index.html": "/spotifygpt-frontend/index.html",
     "main.5002c24b.css.map": "/spotifygpt-frontend/static/css/main.5002c24b.css.map",
-    "main.21053930.js.map": "/spotifygpt-frontend/static/js/main.21053930.js.map"
+    "main.5959dc73.js.map": "/spotifygpt-frontend/static/js/main.5959dc73.js.map"
   },
   "entrypoints": [
     "static/css/main.5002c24b.css",
-    "static/js/main.21053930.js"
+    "static/js/main.5959dc73.js"
   ]
 }
