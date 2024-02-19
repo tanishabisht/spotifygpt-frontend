@@ -66,7 +66,7 @@ function App() {
 
   const handleLogin = async () => {
         try {
-            const response = await axios.get('http://localhost:8000/spotify/login');
+            const response = await axios.get('https://spotifygpt-yz7rgadd7a-uc.a.run.app/spotify/login');
             console.log(response);
         } catch (error) {
             console.error('Error:', error);
