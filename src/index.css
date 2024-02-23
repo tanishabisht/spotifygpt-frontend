@@ -161,23 +161,23 @@ p {
 }
 
 /* Navbar */
-.layout_container {
+.app_container {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
 
-.layout_left {
+.app_header {
   display: flex;
   align-items: center;
 }
 
-.layout_logo {
+.app_logo {
   height: 3rem;
   margin-right: 1rem;
 }
 
-.layout_btn_login {
+.login_btn {
   padding: 0.8rem 2rem;
   color: #121212;
   background-color: #00D869;
@@ -186,12 +186,12 @@ p {
   font-size: 1.2rem;
 }
 
-.layout_btn_login:hover {
+.login_btn:hover {
   background-color: #29b36c;
   cursor: pointer;
 }
 
-.layout_btn_logout {
+.logout_btn {
   padding: 0.8rem 2rem;
   color: #121212;
   background-color: #F5F5F5;
@@ -200,37 +200,37 @@ p {
   font-size: 1.2rem;
 }
 
-.layout_btn_logout:hover {
+.logout_btn:hover {
   background-color: #e4e4e4;
   cursor: pointer;
 }
 
-.layout_children {
+.app_content {
   margin: 2rem 0;
 }
 
-.layout_right {
+.app_user_section {
   display: flex;
   align-items: center;
 }
 
-.layout_user_details {
+.user_details {
   display: flex;
   flex-direction: column;
   align-items: end;
 }
 
-.layout_user {
+.user_name {
   margin-bottom: 5px;
   font-weight: 500;
 }
 
-.layout_email {
+.user_email {
   color: #ccc;
   font-weight: 300;
 }
 
-.layout_user_initial {
+.user_initial {
   margin: 0 1rem;
   height: 3rem;
   width: 3rem;

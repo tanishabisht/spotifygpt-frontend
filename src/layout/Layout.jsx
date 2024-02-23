@@ -66,24 +66,24 @@ const Layout = ({ children }) => {
 
     return (
         <>
-            <div className='layout_container'>
-                <div className='layout_left'>
-                    <img className='layout_logo' src={Logo} alt='logo' />
-                    <h1 className='layout_name'>SpotifyGPT</h1>
+            <div className='app_container'>
+                <div className='app_header'>
+                    <img className='app_logo' src={Logo} alt='logo' />
+                    <h1 className='app_title'>SpotifyGPT</h1>
                 </div>
-                <div className='layout_right'>
-                    {isLogin && <><div className='layout_user_details'>
-                        <h3 className='layout_user'>Tanisha</h3>
-                        <p className='layout_email'>ap20253035@gmail.com</p>
-                    </div>
-                        <div className='layout_user_initial'>T</div>
-                        <button className='layout_btn_logout' onClick={handleLogout}>Logout</button></>}
-
-                    {!isLogin && <button className='layout_btn_login' onClick={handleLogin}>Login</button>}
-
+                <div className='app_user_section'>
+                    {isLogin && <>
+                        <div className='user_details'>
+                            <h3 className='user_name'>{localStorage.getItem('name')}</h3>
+                            <p className='user_email'>{localStorage.getItem('email')}</p>
+                        </div>
+                        <div className='user_initial'>T</div>
+                        <button className='logout_btn' onClick={handleLogout}>Logout</button>
+                    </>}
+                    {!isLogin && <button className='login_btn' onClick={handleLogin}>Login</button>}
                 </div>
             </div>
-            <div className='layout_children'>{children}</div>
+            <div className='app_content'>{children}</div>
         </>
     );
 };
