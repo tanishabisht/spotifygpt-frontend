@@ -38,7 +38,7 @@ const PlaylistResultsPage = () => {
                 const data = {
                     user_id: user_id,
                     name: playlistName,
-                    track_ids: extractTrackIds(tracks),
+                    track_ids: extractTrackIds(songs),
                     access_token: access_token
                 }
                 console.log(data)
