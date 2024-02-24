@@ -267,6 +267,12 @@ p {
   cursor: pointer;
 }
 
+.promtMessageNot_container {
+  padding: 1.5rem;
+  border-radius: 1rem;
+  background-color: #121212;
+  border: 0.12rem dashed #fff;
+}
 
 /* ################### */
 /* ## Discover Page ## */
@@ -450,4 +456,16 @@ p {
 .options li:last-child:hover {
   background-color: #333;
   border-radius: 0 0 1rem 1rem;
+}
+
+
+/* Playlists results page */
+.results_container {
+  margin-top: 5rem;
+}
+
+.results_label {
+  color: #666;
+  font-size: 0.9rem;
+  margin-top: 5px;
 }
