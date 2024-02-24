@@ -4,13 +4,15 @@ const SongCard = (props) => {
     const { name, artists, img, onRemove } = props
 
     return (
-        <div className='songCard_container'>
-            <img className='songCard_img' src={img} alt='song' />
-            <div>
-                <h2 className='songName'>{name}</h2>
-                <p>{artists.map((artist, id) => <span key={id}>{artist}</span>)}</p>
+        <div className='song_card_container'>
+            <div className='song_card_left'>
+                <img className='song_img' src={img} alt='song' />
+                <div>
+                    <h2 className='song_name'>{name}</h2>
+                    <p>{artists.map((artist, id) => <span key={id} className='song_artist'>{artist} . </span>)}</p>
+                </div>
             </div>
-            <button className='songCard_btn' onClick={onRemove}>Remove</button>
+            <button className='song_btn' onClick={onRemove}>Remove</button>
         </div>
     );
 };

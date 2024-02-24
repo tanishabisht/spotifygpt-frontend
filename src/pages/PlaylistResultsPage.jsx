@@ -37,6 +37,9 @@ const PlaylistResultsPage = (props) => {
     ]
 
     const [songs, setSongs] = useState(tracks)
+    const [playlistName, setPlaylistName] = useState('Carleton Commons')
+
+    const onPlaylistNameChange = (e) => setPlaylistName(e.target.value)
 
     const onRemoveSong = (id) => {
         const _songs = songs
@@ -45,12 +48,16 @@ const PlaylistResultsPage = (props) => {
         console.log(id, _songs)
     }
 
+    const handleCreatePlaylistApi = () => {
+        console.log(playlistName)
+    }
+
     return (
         <div className='results_container'>
             <PromptMessage clickable={false}>{search}</PromptMessage>
             <p className='results_label'>Discover your perfect playlist: handpicked tunes tailored to your mood.</p>
 
-            <div className='playlist_container'>
+            <div className='songs_container'>
                 {songs.map((track, id) => <SongCard
                     key={id}
                     name={track.name}
@@ -60,13 +67,19 @@ const PlaylistResultsPage = (props) => {
                 />)}
             </div>
 
-            <div className='createPlaylist_form'>
-                <input />
-                <button>Create a Playlist</button>
+            <div className='playlist_form_container'>
+                <input
+                    type='text'
+                    className='playlist_form_input'
+                    onChange={onPlaylistNameChange}
+                    placeholder="Name your playlist..."
+                    value={playlistName}
+                />
+                <button disabled={!(playlistName !== '')} onClick={handleCreatePlaylistApi} className='playlist_form_input_btn' type="button">Create a Playlist</button>
             </div>
 
             <div className='playlist'>
-                <PlaylistCard />
+                <PlaylistCard name={playlistName} img={'https://i.scdn.co/image/ab67616d0000b273ce4f1737bc8a646c8c4bd25a'} link={''} />
             </div>
         </div>
     );
