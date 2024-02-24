@@ -1,103 +1,7 @@
-/* body {
-  margin: 0;
-  font-family: "Montserrat", sans-serif;
-  margin: 0;
-  padding: 0;
-  height: 100vh; 
-  background: linear-gradient(to bottom, #121212, #121212, #491813) no-repeat;
-  background-attachment: fixed;
-  color: hsl(0, 0%, 100%);
-}
-
-.App {
-  margin: 5rem;
-}
-
-.btn {
-  border: 0;
-  font-size: 1.2rem;
-  padding: 0.5rem 1rem;
-  background-color: #00D869;
-  color: #242424;
-  border-radius: 1rem;
-  cursor: pointer;
-  width: 100%;
-}
+/* 
 
 
-.inputContainer {
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  margin: 5rem 0;
-}
 
-.inputText {
-  outline: none;
-  width: 70%;
-  border: 2px solid #121212;
-  font-size: 1.2rem;
-  padding: 0.5rem 1rem;
-  background-color: #242424;
-  border-radius: 1rem 0 0 1rem;
-  color: #ccc;
-}
-
-.inputSelect {
-  outline: none;
-  border: 2px solid #121212;
-  font-size: 1.2rem;
-  padding: 0.5rem 1rem;
-  background-color: #242424;
-  color: #ccc;
-  border-radius: 0;
-}
-
-.inputBtn {
-  border: 2px solid #121212;
-  font-size: 1.2rem;
-  padding: 0.5rem 1rem;
-  background-color: #00D869;
-  color: #242424;
-  border-radius: 0 1rem 1rem 0;
-  cursor: pointer;
-}
-
-
-.loadingOverlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0, 0, 0, 0.7);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 1000;
-}
-
-.loadingContainer {
-  text-align: center;
-  padding: 20px;
-  border-radius: 10px;
-}
-
-.loadingSpinner {
-  border: 6px solid #00D869;
-  border-top: 6px solid #12121200;
-  border-radius: 50%;
-  width: 50px;
-  height: 50px;
-  animation: spin 1s linear infinite;
-  margin-bottom: 20px;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
 
 .songLinkContainer {
   color: inherit;
@@ -225,7 +129,7 @@ p {
 .user_details {
   display: flex;
   flex-direction: column;
-  align-items: end;
+  align-items: flex-end;
 }
 
 .user_name {
@@ -345,7 +249,7 @@ p {
 .second_line_form {
   display: flex;
   margin-top: 1.5rem;
-  align-items: end;
+  align-items: flex-end;
 }
 
 .second_line_form>div {
@@ -655,4 +559,47 @@ p {
 
 .play_button:hover {
   transform: scale(1.2);
+}
+
+/* #################### */
+/* ## LOADING SCREEN ## */
+/* #################### */
+
+.loadingOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.loadingContainer {
+  text-align: center;
+  padding: 20px;
+  border-radius: 10px;
+}
+
+.loadingSpinner {
+  border: 6px solid #00D869;
+  border-top: 6px solid #12121200;
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  animation: spin 1s linear infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
 }

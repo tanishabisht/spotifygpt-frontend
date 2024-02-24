@@ -4,15 +4,17 @@ import Logo from '../public/logo.png'
 import { SUGGESTIONS_URL } from '../utils/constants'
 import { useAutosizeTextArea } from "../hooks";
 import { ToastContainer, toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
 
 
 const DiscoverPage = () => {
 
+    const navigate = useNavigate();
+
     // states
     const [search, setSearch] = useState("");
     const [num, setNum] = useState(2);
-    const [tracks, setTracks] = useState([]);
 
     // handle state
     const onSearchChange = (e) => setSearch(e.target?.value);
@@ -45,9 +47,14 @@ const DiscoverPage = () => {
                     access_token: access_token
                 }
                 const response = await axios.post(SUGGESTIONS_URL, data);
-                setTracks(response.data.data.tracks)
                 console.log(response)
                 setIsLoading(false)
+                navigate('/results', {
+                    state: {
+                        search: search,
+                        tracks: response.data.data.track,
+                    },
+                });
                 toast('User got suggestions successfully!', { theme: "dark" });
             } catch (error) {
                 console.error('Error during handle request', error);
@@ -56,35 +63,6 @@ const DiscoverPage = () => {
             }
         }
     }
-
-    // // handle suggestions api
-    // const hahaha = async () => {
-    //     if (num && search !== '') {
-    //         const access_token = localStorage.getItem('access_token')
-    //         console.log(access_token)
-    //         try {
-    //             const data = {
-    //                 user_prompt: search,
-    //                 num_suggestions: num,
-    //                 access_token: access_token
-    //             }
-    //             const response = await axios.post(SUGGESTIONS_URL, data);
-
-
-    //             // const data = {
-    //             //     user_id: user_id,
-    //             //     name: 'playlist',
-    //             //     track_ids: ["4frLb7nWtsz2ymBE6k2GRP", "7ySUcLPVX7KudhnmNcgY2D", "6mz1fBdKATx6qP4oP1I65G"],
-    //             //     access_token: access_token
-    //             // }
-    //             // console.log(data)
-    //             // const response = await axios.post('http://localhost:8000/api/create-playlist', data);
-    //             console.log(response)
-    //         } catch (error) {
-    //             console.error('Error during handle request', error);
-    //         }
-    //     }
-    // }
 
     return (
         <div className='discover_container'>

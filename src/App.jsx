@@ -10,7 +10,7 @@ const App = () => {
       <Layout>
         <Routes>
           <Route path="/" element={<DiscoverPage />} />
-          <Route path="/results" element={<PlaylistResultsPage search={'this'} tracks={[]} />} />
+          <Route path="/results" element={<PlaylistResultsPage />} />
         </Routes>
       </Layout>
     </Router>

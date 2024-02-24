@@ -1,55 +1,55 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
+import { useLocation } from 'react-router-dom';
 import { PromptMessage, SongCard, PlaylistCard } from '../components'
+import { CREATE_PLAYLIST_URL } from '../utils/constants'
+import axios from 'axios'
 
-const PlaylistResultsPage = (props) => {
-    // const { search, tracks } = props;
+const extractTrackIds = (tracks) => {
+    return tracks.map(track => track.id)
+}
 
-    const search = 'Suggest a high-energy workout playlist with a combination of pop and electronic dance music'
-    const tracks = [
-        {
-            artists: ['Queen'],
-            external_url: "https://open.spotify.com/track/7tFiyTwD0nx5a1eklYtX2J",
-            id: "7tFiyTwD0nx5a1eklYtX2J",
-            images: [{ height: 640, url: "https://i.scdn.co/image/ab67616d0000b273ce4f1737bc8a646c8c4bd25a", width: 640 }],
-            name: "Bohemian Rhapsody - Remastered 2011"
-        },
-        {
-            artists: ['Queen'],
-            external_url: "https://open.spotify.com/track/7tFiyTwD0nx5a1eklYtX2J",
-            id: "7tFiyTwD0nx5a1eklYtX2J",
-            images: [{ height: 640, url: "https://i.scdn.co/image/ab67616d0000b273ce4f1737bc8a646c8c4bd25a", width: 640 }],
-            name: "Bohemian Rhapsody - Remastered 2011"
-        },
-        {
-            artists: ['Queen'],
-            external_url: "https://open.spotify.com/track/7tFiyTwD0nx5a1eklYtX2J",
-            id: "7tFiyTwD0nx5a1eklYtX2J",
-            images: [{ height: 640, url: "https://i.scdn.co/image/ab67616d0000b273ce4f1737bc8a646c8c4bd25a", width: 640 }],
-            name: "Bohemian Rhapsody - Remastered 2011"
-        },
-        {
-            artists: ['Queen'],
-            external_url: "https://open.spotify.com/track/7tFiyTwD0nx5a1eklYtX2J",
-            id: "7tFiyTwD0nx5a1eklYtX2J",
-            images: [{ height: 640, url: "https://i.scdn.co/image/ab67616d0000b273ce4f1737bc8a646c8c4bd25a", width: 640 }],
-            name: "Bohemian Rhapsody - Remastered 2011"
-        }
-    ]
+const PlaylistResultsPage = () => {
+    const { state } = useLocation();
 
+    const search = state?.search || '';
+    const tracks = state?.tracks || [];
+
+    // states
     const [songs, setSongs] = useState(tracks)
-    const [playlistName, setPlaylistName] = useState('Carleton Commons')
+    const [playlistName, setPlaylistName] = useState('')
+    const [playlistLink, setPlaylistLink] = useState('')
+    const [playlistImgLink, setPlaylistImgLink] = useState('')
 
+    // handle states
     const onPlaylistNameChange = (e) => setPlaylistName(e.target.value)
-
-    const onRemoveSong = (id) => {
-        const _songs = songs
-        _songs.splice(id, 1);
+    const onRemoveSong = (trackId) => {
+        const _songs = [...songs]
+        const id = _songs.findIndex(track => track.id === trackId);
+        if (id !== -1) _songs.splice(id, 1)
         setSongs(_songs)
-        console.log(id, _songs)
     }
 
-    const handleCreatePlaylistApi = () => {
+    const handleCreatePlaylistApi = async () => {
         console.log(playlistName)
+        if (playlistName !== '') {
+            const access_token = localStorage.getItem('access_token')
+            const user_id = localStorage.getItem('user_id')
+            try {
+                const data = {
+                    user_id: user_id,
+                    name: playlistName,
+                    track_ids: extractTrackIds(tracks),
+                    access_token: access_token
+                }
+                console.log(data)
+                const response = await axios.post(CREATE_PLAYLIST_URL, data);
+                console.log(response.data.playlist_link)
+                setPlaylistImgLink(tracks[0].images[1].url)
+                setPlaylistLink(response.data.playlist_link)
+            } catch (error) {
+                console.error('Error during handle request', error);
+            }
+        }
     }
 
     return (
@@ -63,7 +63,7 @@ const PlaylistResultsPage = (props) => {
                     name={track.name}
                     artists={track.artists}
                     img={track.images[0].url}
-                    onRemove={() => onRemoveSong(id)}
+                    onRemove={() => onRemoveSong(track.id)}
                 />)}
             </div>
 
@@ -78,9 +78,11 @@ const PlaylistResultsPage = (props) => {
                 <button disabled={!(playlistName !== '')} onClick={handleCreatePlaylistApi} className='playlist_form_input_btn' type="button">Create a Playlist</button>
             </div>
 
-            <div className='playlist'>
-                <PlaylistCard name={playlistName} img={'https://i.scdn.co/image/ab67616d0000b273ce4f1737bc8a646c8c4bd25a'} link={''} />
-            </div>
+            {playlistLink !== '' && <div className='playlist'>
+                <PlaylistCard name={playlistName} img={playlistImgLink} link={playlistLink} />
+            </div>}
+
+
         </div>
     );
 };

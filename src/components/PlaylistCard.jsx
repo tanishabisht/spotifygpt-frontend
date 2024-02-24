@@ -5,6 +5,7 @@ const PlaylistCard = (props) => {
 
     const onPlay = () => {
         console.log('link', link)
+        window.open(link, '_blank');
     }
 
     return (
