@@ -262,6 +262,11 @@ p {
   border: 0.12rem dashed #fff;
 }
 
+.promtMessage_container:hover {
+  background-color: #242424;
+  cursor: pointer;
+}
+
 
 /* ################### */
 /* ## Discover Page ## */
@@ -360,6 +365,9 @@ p {
   cursor: pointer;
 }
 
+.form_input_btn:disabled {
+  cursor: not-allowed;
+}
 
 /* ################## */
 /* ## CustomSelect ## */

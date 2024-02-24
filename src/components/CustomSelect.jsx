@@ -1,13 +1,11 @@
 import React, { useState } from 'react';
 
 const CustomSelect = (props) => {
-    const { options } = props;
-
+    const { value, onChange, options } = props;
     const [isOpen, setIsOpen] = useState(false);
-    const [selectedOption, setSelectedOption] = useState(options[0]);
 
     const handleSelect = (option) => {
-        setSelectedOption(option);
+        onChange(option)
         setIsOpen(false);
     };
 
@@ -16,7 +14,7 @@ const CustomSelect = (props) => {
     return (
         <div className="customSelect_container">
             <div className="select_container" onClick={toggleDropdown}>
-                <div className="selected_option">{selectedOption}</div>
+                <div className="selected_option">{value}</div>
                 <div className="arrow">&#9660;</div>
             </div>
             {isOpen && (
